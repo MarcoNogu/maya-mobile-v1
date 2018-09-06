@@ -26,219 +26,211 @@ import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 })
 
 export class MyApp {
-	@ViewChild(Nav) nav: Nav;
-	token: string = localStorage.getItem('acessToken');
-	rootPage: any;
-	activePage: any;
+    @ViewChild(Nav) nav: Nav;
+    token: string = localStorage.getItem('acessToken');
+    rootPage: any;
+    activePage: any;
 
-	resposeData: any;
+    resposeData: any;
 
-	pages: Array<{
-		title: string
-		, component: any
-		, icon: string
-		, active: boolean
-		, name: string
-	}>;
+    pages: Array < {
+        title: string,
+        component: any,
+        icon: string,
+        active: boolean,
+        name: string
+    } > ;
 
-	splash = true;
+    splash = true;
 
-	get staticUserName() {
-		return localStorage.getItem('NomeAluno');
-	}
+    get staticUserName() {
+        return localStorage.getItem('NomeAluno');
+    }
 
-	get staticMatriculaID() {
-		return localStorage.getItem('MatriculaID');
-	}
+    get staticMatriculaID() {
+        return localStorage.getItem('MatriculaID');
+    }
 
-	get staticAlunoID() {
-		return localStorage.getItem('AlunoID');
-	}
+    get staticAlunoID() {
+        return localStorage.getItem('AlunoID');
+    }
 
-	get staticTurma() {
-		return localStorage.getItem('Turma');
-	}
+    get staticTurma() {
+        return localStorage.getItem('Turma');
+    }
 
-	get staticFoto() {
-		return localStorage.getItem('UrlFoto');
-	}
+    get staticFoto() {
+        return localStorage.getItem('UrlFoto');
+    }
 
-	constructor(private statusBar: StatusBar, public authService: AuthServiceProvider, public menuOptions: MenuOptionsProvider, public platform: Platform, private network: Network
-		, public splashScreen: SplashScreen, private alertCtrl: AlertController, private headerColor: HeaderColor) {
+    constructor(private statusBar: StatusBar, public authService: AuthServiceProvider, public menuOptions: MenuOptionsProvider, public platform: Platform, private network: Network, public splashScreen: SplashScreen, private alertCtrl: AlertController, private headerColor: HeaderColor) {
 
-		this.initializeApp();
-	}
+        this.initializeApp();
+    }
 
 
-	menuOpened(){
-		this.createMenu();
-	}
+    menuOpened() {
+        this.createMenu();
+    }
 
-	menuClosed(){
-		this.createMenu();
-	}
+    menuClosed() {
+        this.createMenu();
+    }
 
-	initializeApp() {
-		this.platform.ready()
-			.then(() => {				
-				this.headerColor.tint('#0099cc');
-				this.statusBar.overlaysWebView(false);
-				this.statusBar.backgroundColorByHexString('#0099cc');
+    initializeApp() {
+        this.platform.ready()
+            .then(() => {
+                this.headerColor.tint('#0099cc');
+                this.statusBar.overlaysWebView(false);
+                this.statusBar.backgroundColorByHexString('#0099cc');
 
-				this.splashScreen.hide();
+                this.splashScreen.hide();
 
-				setTimeout(() => {
-					this.splash = false;
-				}, 4000);
+                setTimeout(() => {
+                    this.splash = false;
+                }, 4000);
 
-				this.network.onDisconnect()
-					.subscribe(() => {
-						this.noInternetConnection();
-					});
+                this.network.onDisconnect()
+                    .subscribe(() => {
+                        this.noInternetConnection();
+                    });
 
-				if (!JSON.parse(localStorage.getItem("IntroduccionViewed"))) {
-					this.rootPage = IntroPage;
-				} else {
-					if (localStorage.getItem("Email") && localStorage.getItem("Password")) {
-						this.authService.postData(localStorage.getItem("Email"), localStorage.getItem("Password"))
-							.then((result) => {
-								setTimeout(() => {
-									this.resposeData = result;
-									localStorage.setItem('acessToken', this.resposeData.access_token);
-									localStorage.setItem('UsuarioID', this.resposeData.UsuarioID);
-									localStorage.setItem('TipoUsuario', this.resposeData.TipoUsuario);
-									localStorage.setItem('Nome', this.resposeData.Nome);	
-									localStorage.setItem('EmpresaID', this.resposeData.EmpresaID);								
-									this.rootPage = MatriculasPage;		
-									this.createMenu();
-								}, 1000);
-							}, (err) => {
-								err.status === 400 ? this.rootPage = LoginPage : console.error(err)
-							});
-					} else {
-						this.rootPage = LoginPage;
-						this.createMenu();
-					}
-				}
-			});
-	}
+                if (!JSON.parse(localStorage.getItem("IntroduccionViewed"))) {
+                    this.rootPage = IntroPage;
+                } else {
+                    if (localStorage.getItem("Email") && localStorage.getItem("Password")) {
+                        this.authService.postData(localStorage.getItem("Email"), localStorage.getItem("Password"))
+                            .then((result) => {
+                                setTimeout(() => {
+                                    this.resposeData = result;
+                                    localStorage.setItem('acessToken', this.resposeData.access_token);
+                                    localStorage.setItem('UsuarioID', this.resposeData.UsuarioID);
+                                    localStorage.setItem('TipoUsuario', this.resposeData.TipoUsuario);
+                                    localStorage.setItem('Nome', this.resposeData.Nome);
+                                    localStorage.setItem('EmpresaID', this.resposeData.EmpresaID);
+                                    this.rootPage = MatriculasPage;
+                                    this.createMenu();
+                                }, 1000);
+                            }, (err) => {
+                                err.status === 400 ? this.rootPage = LoginPage : console.error(err)
+                            }).catch(function(e) {
+                console.log(e);
+            });
+                    } else {
+                        this.rootPage = LoginPage;
+                        this.createMenu();
+                    }
+                }
+            }).catch(function(e) {
+                console.log(e);
+            });
+    }
 
-	createMenu() {
-		this.menuOptions.buildMenuButtons(localStorage.getItem('UsuarioID') === null ? 0 : localStorage.getItem('UsuarioID')).subscribe(data => {
-			this.pages = [{
-				title: 'Home'
-				, component: HomePage
-				, icon: 'home'
-				, active: true
-				, name: 'Home'
-			}
-				, {
-				title: 'Grade de aulas'
-				, component: GradePage
-				, icon: 'calendar'
-				, active: data.Grade
-				, name: 'Grade'
-			}
-				, {
-				title: 'Mensagens'
-				, component: MensagensPage
-				, icon: 'chatbubbles'
-				, active: true
-				, name: 'Mensagem'
-			}, {
-				title: 'Matrículas'
-				, component: MatriculasPage
-				, icon: 'construct'
-				, active: true
-				, name: 'Matricula'
-			}
-				, {
-				title: 'Ocorrências'
-				, component: OcorrenciasPage
-				, icon: 'briefcase'
-				, active: data.Ocorrencias
-				, name: 'Ocorrencia'
-			}
-				, {
-				title: 'Financeiro'
-				, component: FinanceiroPage
-				, icon: 'cash'
-				, active: data.Financeiro
-				, name: 'Financeiro'
-			}
-				, {
-				title: 'Tarefas'
-				, component: TarefasPage
-				, icon: 'create'
-				, active: data.Tarefas
-				, name: 'Tarefas'
-			}
-				, {
-				title: 'Notas'
-				, component: NotasPage
-				, icon: 'school'
-				, active: data.Notas
-				, name: 'Notas'
-			}
-				, {
-				title: 'Conteúdo Programático'
-				, component: ConteudoPage
-				, icon: 'attach'
-				, active: data.Conteudo
-				, name: 'Conteudo'
-			}
-				, {
-				title: 'Confira seus dados'
-				, component: DadosPage
-				, icon: 'contact'
-				, active: data.Dados
-				, name: 'Dados'
-			}
-			];	
-		});
-	}
+    createMenu() {
+        this.menuOptions.buildMenuButtons(localStorage.getItem('UsuarioID') === null ? 0 : localStorage.getItem('UsuarioID')).subscribe(data => {
+            this.pages = [{
+                title: 'Home',
+                component: HomePage,
+                icon: 'home',
+                active: true,
+                name: 'Home'
+            }, {
+                title: 'Grade de aulas',
+                component: GradePage,
+                icon: 'calendar',
+                active: data.Grade,
+                name: 'Grade'
+            }, {
+                title: 'Mensagens',
+                component: MensagensPage,
+                icon: 'chatbubbles',
+                active: true,
+                name: 'Mensagem'
+            }, {
+                title: 'Matrículas',
+                component: MatriculasPage,
+                icon: 'construct',
+                active: true,
+                name: 'Matricula'
+            }, {
+                title: 'Ocorrências',
+                component: OcorrenciasPage,
+                icon: 'briefcase',
+                active: data.Ocorrencias,
+                name: 'Ocorrencia'
+            }, {
+                title: 'Financeiro',
+                component: FinanceiroPage,
+                icon: 'cash',
+                active: data.Financeiro,
+                name: 'Financeiro'
+            }, {
+                title: 'Tarefas',
+                component: TarefasPage,
+                icon: 'create',
+                active: data.Tarefas,
+                name: 'Tarefas'
+            }, {
+                title: 'Notas',
+                component: NotasPage,
+                icon: 'school',
+                active: data.Notas,
+                name: 'Notas'
+            }, {
+                title: 'Conteúdo Programático',
+                component: ConteudoPage,
+                icon: 'attach',
+                active: data.Conteudo,
+                name: 'Conteudo'
+            }, {
+                title: 'Confira seus dados',
+                component: DadosPage,
+                icon: 'contact',
+                active: data.Dados,
+                name: 'Dados'
+            }];
+        });
+    }
 
-	openPage(page) {
-		this.nav.setRoot(page.component);
-		this.activePage = page;
-	}
+    openPage(page) {
+        this.nav.setRoot(page.component);
+        this.activePage = page;
+    }
 
-	public checkActivePage(page): boolean{
-		return page === this.activePage;
-	}
+    public checkActivePage(page): boolean {
+        return page === this.activePage;
+    }
 
-	noInternetConnection() {
-		let alert = this.alertCtrl.create({
-			message: 'Detectamos que você está sem conexão no momento, o aplicativo será fechado :('
-			, buttons: [{
-				text: 'Ok'
-				, handler: () => {
-					this.platform.exitApp();
-				}
-			}]
-		});
-		alert.present();
-	}
+    noInternetConnection() {
+        let alert = this.alertCtrl.create({
+            message: 'Detectamos que você está sem conexão no momento, o aplicativo será fechado :(',
+            buttons: [{
+                text: 'Ok',
+                handler: () => {
+                    this.platform.exitApp();
+                }
+            }]
+        });
+        alert.present();
+    }
 
-	logout() {
-		let alert = this.alertCtrl.create({
-			message: 'Deseja realmente sair do app?'
-			, buttons: [{
-				text: 'Cancelar'
-				, role: 'cancel'
-				, handler: () => {
-					console.log('Cancel clicked');
-				}
-			}
-				, {
-				text: 'Sair'
-				, handler: () => {
-					localStorage.clear();
-					this.nav.setRoot(LoginPage);
-				}
-			}
-			]
-		});
-		alert.present();
-	}
+    logout() {
+        let alert = this.alertCtrl.create({
+            message: 'Deseja realmente sair do app?',
+            buttons: [{
+                text: 'Cancelar',
+                role: 'cancel',
+                handler: () => {
+                    console.log('Cancel clicked');
+                }
+            }, {
+                text: 'Sair',
+                handler: () => {
+                    localStorage.clear();
+                    this.nav.setRoot(LoginPage);
+                }
+            }]
+        });
+        alert.present();
+    }
 }

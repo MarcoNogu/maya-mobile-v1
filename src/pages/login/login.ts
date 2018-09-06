@@ -11,57 +11,57 @@ import { MenuOptionsProvider } from '../../providers/menu-options/menu-options'
 })
 export class LoginPage {
 
-	private login: FormGroup;
+    private login: FormGroup;
 
-	resposeData: any;
+    resposeData: any;
 
-		constructor(public menuOptions: MenuOptionsProvider, public toast: Toast, public menu: MenuController, public loadingCtrl: LoadingController, public navCtrl: NavController, public authService: AuthServiceProvider, private formBuilder: FormBuilder) {
-			this.menu.enable(false);
-			
-			this.login = this.formBuilder.group({
-				username: ['', Validators.email],
-				password: ['', Validators.required],
-				rememberMe: ['']
-			  });
-		}
+    constructor(public menuOptions: MenuOptionsProvider, public toast: Toast, public menu: MenuController, public loadingCtrl: LoadingController, public navCtrl: NavController, public authService: AuthServiceProvider, private formBuilder: FormBuilder) {
+        this.menu.enable(false);
 
-		submit()
-		{
-			const loader = this.loadingCtrl.create({
-				content: 'Por favor, aguarde...'
-			});
-			loader.present();
+        this.login = this.formBuilder.group({
+            username: ['', Validators.email],
+            password: ['', Validators.required],
+            rememberMe: ['']
+        });
+    }
 
-			this.authService.postData(this.login.value.username , this.login.value.password)
-			.then((result) => {
-				setTimeout(() => {
-				this.resposeData = result;
-				localStorage.setItem('acessToken', this.resposeData.access_token);
-				localStorage.setItem('UsuarioID', this.resposeData.UsuarioID);
-				localStorage.setItem('TipoUsuario', this.resposeData.TipoUsuario);
-				localStorage.setItem('Nome', this.resposeData.Nome);
+    submit() {
+        const loader = this.loadingCtrl.create({
+            content: 'Por favor, aguarde...'
+        });
+        loader.present();
 
-				localStorage.setItem('EmpresaID', this.resposeData.EmpresaID);
+        this.authService.postData(this.login.value.username, this.login.value.password)
+            .then((result) => {
+                setTimeout(() => {
+                    this.resposeData = result;
+                    localStorage.setItem('acessToken', this.resposeData.access_token);
+                    localStorage.setItem('UsuarioID', this.resposeData.UsuarioID);
+                    localStorage.setItem('TipoUsuario', this.resposeData.TipoUsuario);
+                    localStorage.setItem('Nome', this.resposeData.Nome);
 
-				localStorage.setItem("Email", this.login.value.username);
-				localStorage.setItem("Password", this.login.value.password);
+                    localStorage.setItem('EmpresaID', this.resposeData.EmpresaID);
 
-				this.navCtrl.setRoot(MatriculasPage);
-				loader.dismiss();
-			}, 1000);
+                    localStorage.setItem("Email", this.login.value.username);
+                    localStorage.setItem("Password", this.login.value.password);
 
-			}, (err) => {				
-				loader.dismiss();				
-				err.status === 400 ? this.failed() : console.error(err)
-			});
-		}
+                    this.navCtrl.setRoot(MatriculasPage);
+                    loader.dismiss();
+                }, 1000);
+
+            }, (err) => {
+                loader.dismiss();
+                err.status === 400 ? this.failed() : console.error(err)
+            }).catch(function(e) {
+                console.log(e);
+            });
+    }
 
 
-		failed()
-		{
-			this.toast.show('E-mail ou Senha inválidos', '5000', 'center').subscribe(
-				toast => {});
-		}
-		
+    failed() {
+        this.toast.show('E-mail ou Senha inválidos', '5000', 'center').subscribe(
+            toast => {});
+    }
 
-	}
+
+}

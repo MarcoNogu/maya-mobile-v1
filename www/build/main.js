@@ -300,6 +300,8 @@ var LoginPage = (function () {
         }, function (err) {
             loader.dismiss();
             err.status === 400 ? _this.failed() : console.error(err);
+        }).catch(function (e) {
+            console.log(e);
         });
     };
     LoginPage.prototype.failed = function () {
@@ -311,9 +313,10 @@ LoginPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
         selector: 'page-login',template:/*ion-inline-start:"C:\Users\Marco Nogueira\Documents\maya-mobile-v1\src\pages\login\login.html"*/'<ion-content class="login-content">\n  <ion-row class="logo-row">\n    <ion-col>\n      <img src="assets/img/logo.png" width="200" />      \n      <!-- <img src="https://www.haya.com.br/images/logo-colegiohaya.png" />     -->\n    </ion-col>\n  </ion-row>\n  <div class="login-box">\n    <form (ngSubmit)="submit()" [formGroup]="login">\n      <ion-row>\n        <ion-col>\n          <ion-list inset>\n            <ion-item>\n              <ion-input type="email" placeholder="E-mail" formControlName="username"></ion-input>\n            </ion-item>\n\n            <ion-item>\n              <ion-input type="number" style="-webkit-text-security:disc;" placeholder="Senha" formControlName="password"></ion-input>\n            </ion-item>\n\n            <ion-item>\n              <ion-label>Lembrar-Me</ion-label>\n              <ion-checkbox color="#C400FF" checked="true" formControlName="rememberMe"></ion-checkbox>\n            </ion-item>\n\n          </ion-list>\n        </ion-col>\n      </ion-row>\n\n      <ion-row>\n        <ion-col class="signup-col">\n          <button ion-button class="submit-btn" full [disabled]="!login.valid" type="submit">Entrar</button>\n        </ion-col>\n      </ion-row>\n\n    </form>\n\n  </div>\n</ion-content>'/*ion-inline-end:"C:\Users\Marco Nogueira\Documents\maya-mobile-v1\src\pages\login\login.html"*/,
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_6__providers_menu_options_menu_options__["a" /* MenuOptionsProvider */], __WEBPACK_IMPORTED_MODULE_5__ionic_native_toast__["a" /* Toast */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* MenuController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_3__providers_auth_service_auth_service__["a" /* AuthServiceProvider */], __WEBPACK_IMPORTED_MODULE_4__angular_forms__["a" /* FormBuilder */]])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_6__providers_menu_options_menu_options__["a" /* MenuOptionsProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__providers_menu_options_menu_options__["a" /* MenuOptionsProvider */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_5__ionic_native_toast__["a" /* Toast */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__ionic_native_toast__["a" /* Toast */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* MenuController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* MenuController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* LoadingController */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_3__providers_auth_service_auth_service__["a" /* AuthServiceProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_auth_service_auth_service__["a" /* AuthServiceProvider */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_4__angular_forms__["a" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__angular_forms__["a" /* FormBuilder */]) === "function" && _g || Object])
 ], LoginPage);
 
+var _a, _b, _c, _d, _e, _f, _g;
 //# sourceMappingURL=login.js.map
 
 /***/ }),
@@ -451,15 +454,18 @@ var AuthServiceProvider = (function () {
             }, function (err) {
                 reject(err);
             });
+        }).catch(function (e) {
+            console.log(e);
         });
     };
     return AuthServiceProvider;
 }());
 AuthServiceProvider = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["B" /* Injectable */])(),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === "function" && _a || Object])
 ], AuthServiceProvider);
 
+var _a;
 //# sourceMappingURL=auth-service.js.map
 
 /***/ }),
@@ -507,9 +513,10 @@ var MenuOptionsProvider = (function () {
 }());
 MenuOptionsProvider = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["B" /* Injectable */])(),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === "function" && _a || Object])
 ], MenuOptionsProvider);
 
+var _a;
 //# sourceMappingURL=menu-options.js.map
 
 /***/ }),
@@ -1066,6 +1073,8 @@ var PushNotificationsProvider = (function () {
         });
         this.oneSignal.getIds().then(function (res) {
             _this.createPlayerId(localStorage.getItem("UsuarioID"), res.userId);
+        }).catch(function (e) {
+            console.log(e);
         });
         this.oneSignal.endInit();
     };
@@ -1084,15 +1093,18 @@ var PushNotificationsProvider = (function () {
             }, function (err) {
                 reject(err);
             });
+        }).catch(function (e) {
+            console.log(e);
         });
     };
     return PushNotificationsProvider;
 }());
 PushNotificationsProvider = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["B" /* Injectable */])(),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_onesignal__["a" /* OneSignal */]])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__ionic_native_onesignal__["a" /* OneSignal */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__ionic_native_onesignal__["a" /* OneSignal */]) === "function" && _b || Object])
 ], PushNotificationsProvider);
 
+var _a, _b;
 //# sourceMappingURL=push-notifications.js.map
 
 /***/ }),
@@ -1442,9 +1454,10 @@ TarefaDetalhesPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
         selector: 'page-tarefa-detalhes',template:/*ion-inline-start:"C:\Users\Marco Nogueira\Documents\maya-mobile-v1\src\pages\tarefa-detalhes\tarefa-detalhes.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon id="button-menu" ios="ios-menu" md="md-menu"></ion-icon>\n    </button>\n    <ion-title>{{descricao}}</ion-title>\n  </ion-navbar>\n</ion-header>\n<ion-content>\n  <div *ngFor="let item of tarefas">\n    <ion-card *ngFor="let data of item[\'TarefasItens\']">\n      <ion-card-header>\n        {{data.Entrega}}\n      </ion-card-header>\n      <ion-card-content>\n        <br>\n        <p>\n          <span>Tarefa: </span>{{data.Tarefa}}</p>\n      </ion-card-content>\n    </ion-card>\n  </div>\n</ion-content>'/*ion-inline-end:"C:\Users\Marco Nogueira\Documents\maya-mobile-v1\src\pages\tarefa-detalhes\tarefa-detalhes.html"*/,
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* LoadingController */]])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* LoadingController */]) === "function" && _d || Object])
 ], TarefaDetalhesPage);
 
+var _a, _b, _c, _d;
 //# sourceMappingURL=tarefa-detalhes.js.map
 
 /***/ }),
@@ -1531,9 +1544,10 @@ OcorrenciasPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
         selector: 'page-ocorrencias',template:/*ion-inline-start:"C:\Users\Marco Nogueira\Documents\maya-mobile-v1\src\pages\ocorrencias\ocorrencias.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon id="button-menu" ios="ios-menu" md="md-menu"></ion-icon>\n    </button>\n    <ion-title>Ocorrências do aluno</ion-title>\n  </ion-navbar>\n</ion-header>\n<ion-content>\n  <ion-list>\n    <ion-card>\n      <ion-card-content>\n        <ion-card-title>\n          Turma:\n          <span class="name-description">{{ staticTurma }}</span>\n        </ion-card-title>\n      </ion-card-content>\n    </ion-card>\n    <ion-card *ngFor="let item of ocorrencias">\n      <ion-card-header>\n        {{ item.Disciplina }}\n      </ion-card-header>\n      <ion-card-content *ngFor="let data of item[\'Ocorrencias\']">\n        <p>\n          <strong>Data:</strong> {{ data.Data }}</p>\n        <p>\n          <strong>Tipo:</strong> {{ data.Tipo }}</p>\n        <p>\n          <strong>Descrição:</strong> {{ data.OcorrenciaDesc }}</p>\n        <hr>\n      </ion-card-content>\n    </ion-card>\n  </ion-list>\n</ion-content>'/*ion-inline-end:"C:\Users\Marco Nogueira\Documents\maya-mobile-v1\src\pages\ocorrencias\ocorrencias.html"*/,
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_4__providers_has_no_data_has_no_data__["a" /* HasNoDataProvider */], __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* LoadingController */]])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_4__providers_has_no_data_has_no_data__["a" /* HasNoDataProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__providers_has_no_data_has_no_data__["a" /* HasNoDataProvider */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* LoadingController */]) === "function" && _e || Object])
 ], OcorrenciasPage);
 
+var _a, _b, _c, _d, _e;
 //# sourceMappingURL=ocorrencias.js.map
 
 /***/ }),
@@ -1594,34 +1608,34 @@ IntroPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
         selector: 'page-intro',template:/*ion-inline-start:"C:\Users\Marco Nogueira\Documents\maya-mobile-v1\src\pages\intro\intro.html"*/'<ion-content>\n  <ion-slides pager (ionSlideDidChange)="slideChanged()" (ionSlideDrag)="slideMoved()">\n    <ion-slide>\n      <div class="diag" style="background: url(\'assets/img/whitebg.svg\') no-repeat">\n        <ion-icon ios="ios-heart" md="md-heart" color="primary" [@bounce]=\'state\' (@bounce.done)="animationDone()"></ion-icon>\n      </div>\n      <div [@bounce]=\'state\'>\n        <h2>Seja Bem-Vindo(a)</h2>\n        <p>Obrigado por baixar nosso app. Com ele agora você pode obter suas informações de forma fácil na palma da sua mão.</p>\n      </div>\n    </ion-slide>\n    <ion-slide>\n      <div class="diag" style="background: url(\'assets/img/whitebg.svg\') no-repeat">\n        <ion-icon ios="ios-paper-plane" md="md-paper-plane" color="primary" [@bounce]=\'state\'></ion-icon>\n      </div>\n      <div [@bounce]=\'state\'>\n        <h2>Fique por dentro</h2>\n        <p>Consulte suas notas, faltas, tarefas, conteúdos, histórico de pagamento, segunda via de cobrança e muito mais.</p>\n      </div>\n    </ion-slide>\n    <ion-slide>\n      <div class="diag" style="background: url(\'assets/img/whitebg.svg\') no-repeat">\n        <ion-icon ios="ios-warning" md="md-warning" color="primary" [@bounce]=\'state\'></ion-icon>\n      </div>\n      <div [@bounce]=\'state\'>\n        <h2>Atenção</h2>\n        <p>O fornecimento do acesso (Login/Senha) é feito pela secretaria, caso não possua entre em contato.</p>\n      </div>\n    </ion-slide>\n  </ion-slides>\n  <button (click)="skip()" id="skip">{{ skipMsg }}</button>\n</ion-content>'/*ion-inline-end:"C:\Users\Marco Nogueira\Documents\maya-mobile-v1\src\pages\intro\intro.html"*/,
         animations: [
-            Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* trigger */])('bounce', [
-                Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_30" /* state */])('*', Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_31" /* style */])({
+            Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_32" /* trigger */])('bounce', [
+                Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_29" /* state */])('*', Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_30" /* style */])({
                     transform: 'translateX(0)'
                 })),
-                Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_32" /* transition */])('* => rightSwipe', Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_18" /* animate */])('700ms ease-out', Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_25" /* keyframes */])([
-                    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_31" /* style */])({
+                Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_31" /* transition */])('* => rightSwipe', Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_18" /* animate */])('700ms ease-out', Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_24" /* keyframes */])([
+                    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_30" /* style */])({
                         transform: 'translateX(0)',
                         offset: 0
                     }),
-                    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_31" /* style */])({
+                    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_30" /* style */])({
                         transform: 'translateX(-65px)',
                         offset: .3
                     }),
-                    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_31" /* style */])({
+                    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_30" /* style */])({
                         transform: 'translateX(0)',
                         offset: 1
                     })
                 ]))),
-                Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_32" /* transition */])('* => leftSwipe', Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_18" /* animate */])('700ms ease-out', Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_25" /* keyframes */])([
-                    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_31" /* style */])({
+                Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_31" /* transition */])('* => leftSwipe', Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_18" /* animate */])('700ms ease-out', Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_24" /* keyframes */])([
+                    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_30" /* style */])({
                         transform: 'translateX(0)',
                         offset: 0
                     }),
-                    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_31" /* style */])({
+                    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_30" /* style */])({
                         transform: 'translateX(65px)',
                         offset: .3
                     }),
-                    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_31" /* style */])({
+                    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_30" /* style */])({
                         transform: 'translateX(0)',
                         offset: 1
                     })
@@ -1717,12 +1731,10 @@ MensagensPage = __decorate([
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(347);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(364);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(0);
-
 
 
 Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_1__app_module__["a" /* AppModule */]);
-Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["_20" /* enableProdMode */])();
+// enableProdMode(); 
 //# sourceMappingURL=main.js.map
 
 /***/ }),
@@ -2073,6 +2085,8 @@ var MyApp = (function () {
                         }, 1000);
                     }, function (err) {
                         err.status === 400 ? _this.rootPage = __WEBPACK_IMPORTED_MODULE_11__pages_login_login__["a" /* LoginPage */] : console.error(err);
+                    }).catch(function (e) {
+                        console.log(e);
                     });
                 }
                 else {
@@ -2080,6 +2094,8 @@ var MyApp = (function () {
                     _this.createMenu();
                 }
             }
+        }).catch(function (e) {
+            console.log(e);
         });
     };
     MyApp.prototype.createMenu = function () {
@@ -2091,15 +2107,13 @@ var MyApp = (function () {
                     icon: 'home',
                     active: true,
                     name: 'Home'
-                },
-                {
+                }, {
                     title: 'Grade de aulas',
                     component: __WEBPACK_IMPORTED_MODULE_9__pages_grade_grade__["a" /* GradePage */],
                     icon: 'calendar',
                     active: data.Grade,
                     name: 'Grade'
-                },
-                {
+                }, {
                     title: 'Mensagens',
                     component: __WEBPACK_IMPORTED_MODULE_17__pages_mensagens_mensagens__["a" /* MensagensPage */],
                     icon: 'chatbubbles',
@@ -2111,50 +2125,43 @@ var MyApp = (function () {
                     icon: 'construct',
                     active: true,
                     name: 'Matricula'
-                },
-                {
+                }, {
                     title: 'Ocorrências',
                     component: __WEBPACK_IMPORTED_MODULE_15__pages_ocorrencias_ocorrencias__["a" /* OcorrenciasPage */],
                     icon: 'briefcase',
                     active: data.Ocorrencias,
                     name: 'Ocorrencia'
-                },
-                {
+                }, {
                     title: 'Financeiro',
                     component: __WEBPACK_IMPORTED_MODULE_8__pages_financeiro_financeiro__["a" /* FinanceiroPage */],
                     icon: 'cash',
                     active: data.Financeiro,
                     name: 'Financeiro'
-                },
-                {
+                }, {
                     title: 'Tarefas',
                     component: __WEBPACK_IMPORTED_MODULE_13__pages_tarefas_tarefas__["a" /* TarefasPage */],
                     icon: 'create',
                     active: data.Tarefas,
                     name: 'Tarefas'
-                },
-                {
+                }, {
                     title: 'Notas',
                     component: __WEBPACK_IMPORTED_MODULE_12__pages_notas_notas__["a" /* NotasPage */],
                     icon: 'school',
                     active: data.Notas,
                     name: 'Notas'
-                },
-                {
+                }, {
                     title: 'Conteúdo Programático',
                     component: __WEBPACK_IMPORTED_MODULE_7__pages_conteudo_conteudo__["a" /* ConteudoPage */],
                     icon: 'attach',
                     active: data.Conteudo,
                     name: 'Conteudo'
-                },
-                {
+                }, {
                     title: 'Confira seus dados',
                     component: __WEBPACK_IMPORTED_MODULE_6__pages_dados_dados__["a" /* DadosPage */],
                     icon: 'contact',
                     active: data.Dados,
                     name: 'Dados'
-                }
-            ];
+                }];
         });
     };
     MyApp.prototype.openPage = function (page) {
@@ -2187,15 +2194,13 @@ var MyApp = (function () {
                     handler: function () {
                         console.log('Cancel clicked');
                     }
-                },
-                {
+                }, {
                     text: 'Sair',
                     handler: function () {
                         localStorage.clear();
                         _this.nav.setRoot(__WEBPACK_IMPORTED_MODULE_11__pages_login_login__["a" /* LoginPage */]);
                     }
-                }
-            ]
+                }]
         });
         alert.present();
     };
@@ -2203,15 +2208,15 @@ var MyApp = (function () {
 }());
 __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* Nav */]),
-    __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* Nav */])
+    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* Nav */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* Nav */]) === "function" && _a || Object)
 ], MyApp.prototype, "nav", void 0);
 MyApp = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({template:/*ion-inline-start:"C:\Users\Marco Nogueira\Documents\maya-mobile-v1\src\app\app.html"*/'<div id="custom-overlay" [style.display]="splash ? \'flex\': \'none\'">\n  <div class="flb" style="text-align: center;">\n    <div class="Aligner-item Aligner-item--top"></div>\n    <img src="assets/logo.svg">\n    <div class="Aligner-item Aligner-item--bottom"></div>\n  </div>\n</div>\n<ion-menu [content]="content"  (ionOpen)="menuOpened()" (ionClose)="menuClosed()" side="left" class="menu-material" id="menu-material">\n  <ion-content>\n    <div class="menu-header">\n      <!--material-design-background-->\n      <img width="100" class="user-avatar round" src="{{staticFoto}}" onerror="this.src=\'assets/img/avatar/avatar.png\'" />\n      <p class="name">{{staticUserName}}</p>\n      <p class="e-mail">{{staticTurma}}</p>\n    </div>\n    <ion-list no-lines>\n      <div *ngFor="let p of pages">\n        <button [class.active]="checkActivePage(p)" *ngIf="p.active" id="{{p.name}}" menuClose="left" ion-item detail-none (click)="openPage(p)">\n          <ion-icon [name]="p.icon" item-left></ion-icon>\n          {{p.title}}\n        </button>\n      </div>\n      <button menuClose="left" ion-item detail-none (click)="logout()">\n        <ion-icon name="log-out" item-left></ion-icon>\n        Sair\n      </button>\n    </ion-list>\n  </ion-content>\n</ion-menu>\n\n<!-- Disable swipe-to-go-back because it\'s poor UX to combine STGB with side menus -->\n<ion-nav [root]="rootPage" #content swipeBackEnabled="true"></ion-nav>'/*ion-inline-end:"C:\Users\Marco Nogueira\Documents\maya-mobile-v1\src\app\app.html"*/
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_19__providers_auth_service_auth_service__["a" /* AuthServiceProvider */], __WEBPACK_IMPORTED_MODULE_18__providers_menu_options_menu_options__["a" /* MenuOptionsProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* Platform */], __WEBPACK_IMPORTED_MODULE_4__ionic_native_network__["a" /* Network */],
-        __WEBPACK_IMPORTED_MODULE_2__ionic_native_splash_screen__["a" /* SplashScreen */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */], __WEBPACK_IMPORTED_MODULE_5__ionic_native_header_color__["a" /* HeaderColor */]])
+    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__ionic_native_status_bar__["a" /* StatusBar */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__ionic_native_status_bar__["a" /* StatusBar */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_19__providers_auth_service_auth_service__["a" /* AuthServiceProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_19__providers_auth_service_auth_service__["a" /* AuthServiceProvider */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_18__providers_menu_options_menu_options__["a" /* MenuOptionsProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_18__providers_menu_options_menu_options__["a" /* MenuOptionsProvider */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* Platform */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* Platform */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_4__ionic_native_network__["a" /* Network */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__ionic_native_network__["a" /* Network */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_native_splash_screen__["a" /* SplashScreen */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_native_splash_screen__["a" /* SplashScreen */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]) === "function" && _h || Object, typeof (_j = typeof __WEBPACK_IMPORTED_MODULE_5__ionic_native_header_color__["a" /* HeaderColor */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__ionic_native_header_color__["a" /* HeaderColor */]) === "function" && _j || Object])
 ], MyApp);
 
+var _a, _b, _c, _d, _e, _f, _g, _h, _j;
 //# sourceMappingURL=app.component.js.map
 
 /***/ }),
