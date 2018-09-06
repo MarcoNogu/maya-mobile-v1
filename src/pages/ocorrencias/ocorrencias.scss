@@ -1,0 +1,40 @@
+page-ocorrencias {
+    ion-card-title, ion-card-header{
+		text-align: center;
+		font-size: .9em !important;
+        color: map-get($colors, secondary) !important;
+    }
+    
+	p{
+		font-size: 1.2rem;
+        text-align: left;
+		color: map-get($colors, primary);
+	}
+    .card-ios, .card-md{
+        border-radius: 3px !important;
+        border-top: 4px solid map-get($colors, primary);
+        color: #000;
+    }
+	.name-description{
+        color: #000000;
+	}
+	h1 {
+        padding: 0px 0px 0px 13px;
+        color: map-get($colors, primary);
+    }
+}
+.ios, .md {
+	
+	   page-ocorrencias {
+	
+		   .scroll-content {
+			   background-color: map-get($colors, light);
+		   }
+	
+		   ion-card-header {
+			   font-weight: bold;
+		   }
+	
+	   }
+	
+   }

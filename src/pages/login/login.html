@@ -1,0 +1,39 @@
+<ion-content class="login-content">
+  <ion-row class="logo-row">
+    <ion-col>
+      <img src="assets/img/logo.png" width="200" />      
+      <!-- <img src="https://www.haya.com.br/images/logo-colegiohaya.png" />     -->
+    </ion-col>
+  </ion-row>
+  <div class="login-box">
+    <form (ngSubmit)="submit()" [formGroup]="login">
+      <ion-row>
+        <ion-col>
+          <ion-list inset>
+            <ion-item>
+              <ion-input type="email" placeholder="E-mail" formControlName="username"></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-input type="number" style="-webkit-text-security:disc;" placeholder="Senha" formControlName="password"></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label>Lembrar-Me</ion-label>
+              <ion-checkbox color="#C400FF" checked="true" formControlName="rememberMe"></ion-checkbox>
+            </ion-item>
+
+          </ion-list>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col class="signup-col">
+          <button ion-button class="submit-btn" full [disabled]="!login.valid" type="submit">Entrar</button>
+        </ion-col>
+      </ion-row>
+
+    </form>
+
+  </div>
+</ion-content>

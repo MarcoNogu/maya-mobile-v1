@@ -1,0 +1,27 @@
+<ion-header>
+        <ion-navbar>
+                <button ion-button menuToggle>
+                        <ion-icon id="button-menu" ios="ios-menu" md="md-menu"></ion-icon>
+                </button>
+                <ion-title>{{descricao}}</ion-title>
+        </ion-navbar>
+</ion-header>
+<ion-content>
+        <ion-card *ngFor="let item of conteudos">
+                <ion-card-header>
+                        {{item.Data | date: 'dd/MM/yyyy'}}
+                </ion-card-header>
+                <ion-card-content>
+                        <br>
+                        <p>
+                                <span>Programado: </span>{{item.Programado}}</p>
+                        <hr>
+                        <p>
+                                <span>Conteúdo: </span>{{item.ConteudoAula}}</p>
+                </ion-card-content>
+        </ion-card>
+        <ion-infinite-scroll *ngIf="page < size" (ionInfinite)="infiniteScroll($event)">
+                <ion-infinite-scroll-content loadingSpinner="crescent" loadingText="Carregando mais informações...">
+                </ion-infinite-scroll-content>
+            </ion-infinite-scroll>
+</ion-content>

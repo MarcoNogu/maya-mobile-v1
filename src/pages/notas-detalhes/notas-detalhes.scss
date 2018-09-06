@@ -1,0 +1,48 @@
+.ios, .md {
+	
+    page-notas-detalhes {
+	
+		   .scroll-content {
+			   background-color: map-get($colors, light);
+           }
+
+           ion-list-header{
+                margin-bottom: 0px !important;
+           }
+
+          
+           .list-header-md, .list-header-ios {
+                font-weight: bold;
+                color: map-get($colors, secondary);
+                font-size: 2rem;
+            }
+
+            .bar-button-default-md, .bar-button-clear-md-default, .bar-button-md-default,
+            .bar-button-default-ios, .bar-button-clear-ios-default, .bar-button-iosmd-default,
+            {
+                color: #fff;
+            }
+
+            ion-list{
+                margin: 5px;
+            }
+
+            .card-ios, .card-md{
+                border-radius: 3px !important;
+                border-top: 4px solid map-get($colors, primary);
+                color: #000;
+            }
+            ion-label>p{
+                color: #000;
+                font-weight: bold;
+            }
+            h4>.left{
+                color: map-get($colors, primary);
+                font-weight: bold;
+            }
+            .abaixo{
+                color: red;
+            }
+       }
+       
+   }

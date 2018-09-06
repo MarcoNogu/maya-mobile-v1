@@ -1,0 +1,14 @@
+ionic cordova build android --prod --release
+
+keytool -genkey -v -keystore maamobile.keystore -alias alias_name -keyalg RSA -keysize 2048 -validity 10000
+
+jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore maamobile.keystore android-release-unsigned.apk alias_name
+
+./zipalign -v 4 android-release-unsigned.apk maamobile.apk
+
+
+
+-- 
+<widget id="com.br.iguatemy" version="0.0.2" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.br.minhaescolav1" version="0.0.2" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.br.lectus" version="0.0.2" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">

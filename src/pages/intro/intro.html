@@ -1,0 +1,32 @@
+<ion-content>
+  <ion-slides pager (ionSlideDidChange)="slideChanged()" (ionSlideDrag)="slideMoved()">
+    <ion-slide>
+      <div class="diag" style="background: url('assets/img/whitebg.svg') no-repeat">
+        <ion-icon ios="ios-heart" md="md-heart" color="primary" [@bounce]='state' (@bounce.done)="animationDone()"></ion-icon>
+      </div>
+      <div [@bounce]='state'>
+        <h2>Seja Bem-Vindo(a)</h2>
+        <p>Obrigado por baixar nosso app. Com ele agora você pode obter suas informações de forma fácil na palma da sua mão.</p>
+      </div>
+    </ion-slide>
+    <ion-slide>
+      <div class="diag" style="background: url('assets/img/whitebg.svg') no-repeat">
+        <ion-icon ios="ios-paper-plane" md="md-paper-plane" color="primary" [@bounce]='state'></ion-icon>
+      </div>
+      <div [@bounce]='state'>
+        <h2>Fique por dentro</h2>
+        <p>Consulte suas notas, faltas, tarefas, conteúdos, histórico de pagamento, segunda via de cobrança e muito mais.</p>
+      </div>
+    </ion-slide>
+    <ion-slide>
+      <div class="diag" style="background: url('assets/img/whitebg.svg') no-repeat">
+        <ion-icon ios="ios-warning" md="md-warning" color="primary" [@bounce]='state'></ion-icon>
+      </div>
+      <div [@bounce]='state'>
+        <h2>Atenção</h2>
+        <p>O fornecimento do acesso (Login/Senha) é feito pela secretaria, caso não possua entre em contato.</p>
+      </div>
+    </ion-slide>
+  </ion-slides>
+  <button (click)="skip()" id="skip">{{ skipMsg }}</button>
+</ion-content>

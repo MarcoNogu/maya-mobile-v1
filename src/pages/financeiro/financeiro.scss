@@ -1,0 +1,57 @@
+page-financeiro {    
+    .card-ios, .card-md{
+        border-radius: 3px !important;
+        border-top: 4px solid map-get($colors, primary);
+        color: #000;
+    }
+    ion-card-title,
+    ion-card-header {
+        font-size: .9em !important;
+        color: map-get($colors, secondary) !important;
+        text-align: center;
+        font-weight: bold;
+    }
+    h1 {
+        padding: 0px 0px 0px 13px;
+        color: map-get($colors, primary);
+    }
+    .button-ios, .button-md {
+        font-size: 0.9em !important;
+    }
+    .name-description{
+        color: #000000;
+    }
+    h2,
+    h3,
+    h4,
+    h5 {
+        text-align: center;
+    }
+    h5 {
+        color: #000066 !important;
+        font-size: 2.5em !important;
+    }
+    ion-grid {
+        height: 100%;
+        justify-content: center;
+    }
+    .bolsa{
+        color: #00cc00 !important;
+    }
+}
+
+.ios, .md {
+	
+	   page-financeiro {
+	
+		   .scroll-content {
+			   background-color: map-get($colors, light);
+		   }
+	
+		   ion-card-header {
+			   font-weight: bold;
+		   }
+	
+	   }
+	
+   }

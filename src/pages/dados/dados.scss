@@ -1,0 +1,8 @@
+page-dados {
+    ion-list-header {
+        color: map-get($colors, primary) !important;
+        background-color: #EFEFEF !important;
+        border: none !important;
+        font-size: 2rem;
+    }
+}

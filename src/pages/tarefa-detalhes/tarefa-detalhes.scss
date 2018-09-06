@@ -1,0 +1,26 @@
+.ios, .md {
+	
+    page-tarefa-detalhes {
+	
+		   .scroll-content {
+			   background-color: map-get($colors, light);
+           }
+
+            .bar-button-default-md, .bar-button-clear-md-default, .bar-button-md-default,
+            .bar-button-default-ios, .bar-button-clear-ios-default, .bar-button-iosmd-default,
+            {
+                color: #fff;
+            }
+            ion-card-header{
+                text-align: center;
+                color: map-get($colors, secondary);
+                background-color: map-get($colors, light);
+                font-weight: bold;
+            }
+            span{
+                font-weight: bold;
+            }
+
+       }
+       
+   }

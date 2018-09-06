@@ -1,0 +1,22 @@
+page-conteudo {
+    ion-card-content{
+        text-align: center;
+        font-weight: bold;
+        color: map-get($colors, secondary);
+    }
+    h1 {
+        padding: 0px 0px 0px 13px;
+        color: map-get($colors, primary);
+    }
+}
+.ios, .md {
+	
+	   page-conteudo {
+	
+		   .scroll-content {
+			   background-color: map-get($colors, light);
+		   }
+	
+	   }
+	
+   }

@@ -1,0 +1,70 @@
+<ion-header>
+        <ion-navbar>
+           <button ion-button menuToggle>
+              <ion-icon id="button-menu" ios="ios-menu" md="md-menu"></ion-icon>
+           </button>
+           <ion-title>Home</ion-title>
+        </ion-navbar>
+     </ion-header>
+     <ion-content>
+        <h1>Seja Bem-Vindo(a)</h1>
+        <ion-card>
+           <ion-card-content>
+              <ion-card-title text-center>Você está visualizando as informações de: </ion-card-title>
+              <h3>{{staticAlunoNome}}</h3>
+              <h3>{{staticAlunoTurma}}</h3>
+           </ion-card-content>
+        </ion-card>
+        <div *ngIf="documentos?.length > 0">
+           <h1>Atenção</h1>
+           <ion-card>
+              <ion-card-content>
+                 <ion-card-title text-center>Documentos Pendentes</ion-card-title>
+                 <ul>
+                    <li *ngFor="let item of documentos">{{item.Descricao}}</li>
+                 </ul>
+              </ion-card-content>
+           </ion-card>
+        </div>
+           <div *ngFor="let msg of mensagem">
+              <h1>Notificações</h1>
+              <ion-card>
+                 <ion-card-content>
+                    <ion-card-title text-center>{{ msg.Titulo }}</ion-card-title>
+                    <h3>Data {{ msg.Data | date: 'dd/MM/yyyy'}}</h3>
+                    <br>
+                    <h4>{{ msg.Mensagem }}</h4>
+                    <br>
+                    <span>{{ msg.Por }}</span>
+                 </ion-card-content>
+              </ion-card>
+           </div>
+        <div [class.hide]="!visible">
+           <h1>Frequência do Aluno</h1>
+           <ion-card>
+              <ion-card-header>
+                 Faltas por disciplina
+              </ion-card-header>
+              <ion-card-content>
+                 <canvas #barCanvas></canvas>
+                 <br>
+              </ion-card-content>
+           </ion-card>
+        </div>
+        <div *ngFor="let item of boleto">
+        <div *ngIf="item.AcessoPermitido">
+           <h1>Financeiro</h1>
+           <ion-card>
+              <ion-card-content>
+                 <ion-card-title text-center>Cobrança do mês atual</ion-card-title>
+                 <h3 *ngIf="item.Status">(Pago)</h3>
+                 <h4>Vencimento em {{item.Vencimento}}</h4>
+                 <br>
+                 <h5>R$ {{item.Previsto}}</h5>
+                 <hr>
+                 <button *ngIf="!item.Status" ion-button (click)="codBarras(item.CodBarras)">Cód. De Barras</button>
+              </ion-card-content>
+           </ion-card>
+        </div>
+        </div>
+     </ion-content>

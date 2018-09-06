@@ -1,0 +1,22 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon id="button-menu" ios="ios-menu" md="md-menu"></ion-icon>
+        </button>
+        <ion-title>Tarefas</ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+    <h1>Disciplinas</h1>
+    <ion-card>
+        <ion-card-header text-center>
+            {{staticAlunoTurma}}
+        </ion-card-header>
+        <ion-list>
+            <button *ngFor="let item of disciplinas" ion-item (click)="openTarefasDisciplina($event, item.DisciplinaId, item.Disciplina)">
+                <!-- <ion-icon name="cart" item-start></ion-icon> -->
+                {{item.Disciplina}}
+            </button>
+        </ion-list>
+    </ion-card>
+</ion-content>

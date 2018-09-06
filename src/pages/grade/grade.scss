@@ -1,0 +1,44 @@
+page-grade {
+    ion-card-title, ion-card-header{
+        text-align: center;
+        padding: 20px 0px 0px 0px !important;
+        font-size: 1.6rem !important;
+        color: map-get($colors, secondary) !important;
+    }
+    .card-content-md, .card-content-ios {
+        padding: 0px 0px !important;
+    }
+    h1 {
+        padding: 0px 0px 0px 13px;
+        color: map-get($colors, primary);
+    }
+    ul>li {
+        font-size: 1.1em;
+        text-align: left;
+        list-style-type: decimal-leading-zero;
+    }
+    li>span {
+        color: map-get($colors, primary);
+    }
+    .card-ios, .card-md{
+        border-radius: 3px !important;
+        border-top: 4px solid map-get($colors, primary);
+        color: #000;
+    }
+   
+}
+.ios, .md {
+	
+	   page-grade {
+	
+		   .scroll-content {
+			   background-color: map-get($colors, light);
+		   }
+	
+		   ion-card-header {
+			   font-weight: bold;
+		   }
+	
+	   }
+	
+   }

@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon id="button-menu" ios="ios-menu" md="md-menu"></ion-icon>
+    </button>
+    <ion-title>{{descricao}}</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <div *ngFor="let item of tarefas">
+    <ion-card *ngFor="let data of item['TarefasItens']">
+      <ion-card-header>
+        {{data.Entrega}}
+      </ion-card-header>
+      <ion-card-content>
+        <br>
+        <p>
+          <span>Tarefa: </span>{{data.Tarefa}}</p>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

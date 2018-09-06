@@ -1,0 +1,20 @@
+<ion-header>
+        <ion-navbar>
+                <button ion-button menuToggle>
+                        <ion-icon id="button-menu" ios="ios-menu" md="md-menu"></ion-icon>
+                </button>
+                <ion-title>{{descricao}}</ion-title>
+        </ion-navbar>
+</ion-header>
+<ion-content>
+        <ion-list *ngFor="let item of notas">
+                <ion-item class="item-remove-animate list-grow-animation">
+                        <p>{{item.Disciplina}}</p>
+                        <br>
+                        <h4 *ngFor="let data of item['NotasBoletim']">
+                                <span class="left">{{data.Coluna}}</span>:
+                                <span [class.abaixo]="data.Abaixo">{{data.Nota}}</span>
+                        </h4>
+                </ion-item>
+        </ion-list>
+</ion-content>

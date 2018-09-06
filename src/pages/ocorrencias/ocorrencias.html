@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon id="button-menu" ios="ios-menu" md="md-menu"></ion-icon>
+    </button>
+    <ion-title>Ocorrências do aluno</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <ion-list>
+    <ion-card>
+      <ion-card-content>
+        <ion-card-title>
+          Turma:
+          <span class="name-description">{{ staticTurma }}</span>
+        </ion-card-title>
+      </ion-card-content>
+    </ion-card>
+    <ion-card *ngFor="let item of ocorrencias">
+      <ion-card-header>
+        {{ item.Disciplina }}
+      </ion-card-header>
+      <ion-card-content *ngFor="let data of item['Ocorrencias']">
+        <p>
+          <strong>Data:</strong> {{ data.Data }}</p>
+        <p>
+          <strong>Tipo:</strong> {{ data.Tipo }}</p>
+        <p>
+          <strong>Descrição:</strong> {{ data.OcorrenciaDesc }}</p>
+        <hr>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+</ion-content>

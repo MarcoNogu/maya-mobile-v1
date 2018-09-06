@@ -1,0 +1,26 @@
+<ion-content>
+  <h1>Selecione qual matrícula você deseja visualizar :) </h1>
+  <ion-card *ngFor="let item of aulas">
+    <ion-card-content>
+      <ion-card-title>
+        {{item.Nome}}
+      </ion-card-title>
+      <ion-list radio-group [(ngModel)]="qualMatricula">
+        <ion-item *ngFor="let data of item['Matriculas']">
+          <ion-label>{{data.Turma}}</ion-label>
+          <ion-radio value="{{data.MatriculaID}}" (click)="obterAluno(data.MatriculaID)"></ion-radio>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+  <div *ngIf="aulas?.length === 0">
+    <ion-card>
+      <ion-card-content>
+        <ion-card-title>
+          Desculpe :(
+        </ion-card-title>
+        <p>Ainda não existe nenhuma matrícula em seu usuário! Por favor, entre em contato com a secretaria.</p>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

@@ -1,0 +1,46 @@
+page-matriculas {
+    @import url('https://fonts.googleapis.com/css?family=Montserrat');
+    * {
+        font-family: 'Montserrat', sans-serif !important;        
+    }
+    h1{
+        padding: 13px !important;
+        font-size: 2rem !important;
+        color: map-get($colors, primary);
+        font-weight: bold !important;
+    }
+
+    .card-ios, .card-md{
+        border-radius: 3px !important;
+        border-top: 4px solid map-get($colors, primary);
+        color: #000;
+    }
+
+    ion-card-title, ion-card-header{
+        font-size: 1.6rem !important;
+        color: map-get($colors, secondary) !important;
+        font-weight: bold;
+    }
+
+    ion-label{
+        font-size: 1.1rem ;
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+}
+
+.ios, .md {
+	
+	   page-matriculas {
+	
+		   .scroll-content {
+               background-color: map-get($colors, light);
+		   }
+	
+		   ion-card-header {
+			   font-weight: bold;
+		   }
+	
+	   }
+	
+   }

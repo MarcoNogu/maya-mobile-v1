@@ -1,0 +1,29 @@
+page-boleto-visualizar {
+    div{
+        margin: 5px;
+        padding: 5px;
+    }
+
+    ion-list-header{
+        margin-bottom: 0px !important;
+   }
+
+  
+   .list-header-md, .list-header-ios {
+        font-weight: bold;
+        color: map-get($colors, secondary);
+        font-size: 2rem;
+    }
+
+    .bar-button-default-md, .bar-button-clear-md-default, .bar-button-md-default,
+    .bar-button-default-ios, .bar-button-clear-ios-default, .bar-button-iosmd-default,
+    {
+        color: #fff;
+    }
+
+    ion-list{
+        margin: 5px;
+    }
+
+    
+}

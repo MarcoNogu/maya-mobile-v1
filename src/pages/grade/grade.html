@@ -1,0 +1,22 @@
+<ion-header>
+        <ion-navbar>
+                <button ion-button menuToggle>
+                        <ion-icon id="button-menu" ios="ios-menu" md="md-menu"></ion-icon>
+                </button>
+                <ion-title>Grade Horária</ion-title>
+        </ion-navbar>
+</ion-header>
+<ion-content>
+        <ion-card *ngFor="let item of aulas" class="item-remove-animate list-grow-animation">
+                <ion-card-header>
+                        {{ item.DiaExtenso }}
+                </ion-card-header>
+                <ion-card-content>
+                        <ul>
+                                <li *ngFor="let data of item['Aulas']">
+                                        <span>{{ data.Inicio }} ás {{ data.Final }}</span> - {{ data.Disciplina }}
+                                </li>
+                        </ul>
+                </ion-card-content>
+        </ion-card>
+</ion-content>

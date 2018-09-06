@@ -1,0 +1,28 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+      <ion-icon id="button-menu" ios="ios-menu" md="md-menu"></ion-icon>
+    </button>
+        <ion-title>Mensagens</ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+    <div>
+        <ion-card *ngFor="let msg of mensagens">
+            <ion-card-header>
+                {{ msg.Titulo }}
+            </ion-card-header>
+            <ion-card-content>
+                <br>
+                <p>
+                    <span>Mensagem: </span>{{ msg.Mensagem }}</p>
+                <p><span>Data: </span> {{ msg.Data | date: 'dd/MM/yyyy'}}</p>
+                <p><span>Por: </span>{{ msg.Por }}</p>
+            </ion-card-content>
+        </ion-card>
+    </div>
+    <ion-infinite-scroll *ngIf="page < size" (ionInfinite)="infiniteScroll($event)">
+        <ion-infinite-scroll-content loadingSpinner="crescent" loadingText="Carregando mais informações...">
+        </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+</ion-content>

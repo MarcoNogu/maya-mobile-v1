@@ -1,0 +1,48 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon id="button-menu" ios="ios-menu" md="md-menu"></ion-icon>
+        </button>
+        <ion-title>Confira seus dados</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-list *ngFor="let item of configs">
+        <ion-list-header>
+            Confira seus dados
+        </ion-list-header>
+        <ion-item>
+            <ion-label color="primary" stacked>Nome</ion-label>
+            <ion-input type="nome" value="{{ item.Nome }}" disabled="true"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label color="primary" stacked>Telefone</ion-label>
+            <ion-input type="text" value="{{ item.Telefone }}" disabled="true"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label color="primary" stacked>Celular</ion-label>
+            <ion-input type="text" value="{{ item.Celular }}" disabled="true"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label color="primary" stacked>E-mail</ion-label>
+            <ion-input type="text" value="{{ item.Email }}" disabled="true"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label color="primary" stacked>CEP</ion-label>
+            <ion-input type="text" value="{{ item.CEP }}" disabled="true"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label color="primary" stacked>Endereço</ion-label>
+            <ion-input type="text" value="{{ item.Endereco }}" disabled="true"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label color="primary" stacked>RG</ion-label>
+            <ion-input type="text" value="{{ item.RG }}" disabled="true"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label color="primary" stacked>CPF</ion-label>
+            <ion-input type="text" value="{{ item.CPF }}" disabled="true"></ion-input>
+        </ion-item>
+    </ion-list>
+</ion-content>
